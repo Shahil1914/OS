@@ -48,3 +48,49 @@ for(i=0;i<n;i++)
     }
     printf("\n");
 }
+do{
+  for(k=0;k<n;k++)
+  {
+      for(i=0;i<n;i++)
+      {
+          if(flag[i]==0)
+          {
+            count=0;
+            for(j=0;j<r;j++)
+            {
+               if(available[j]>=need[i][j])
+               count++;
+            }
+            if(count==r)
+            {
+               count1++;
+               flag[i]=1;
+               sq[count1-1]=i;
+               for(j=0;j<r;j++)
+              {
+                   available[j]=available[j]+alloc[i][j];
+              }
+               break;
+            }
+         }
+     }
+  }
+  if(count1!=n)
+  {
+     printf("\n.....its an unsafe state........");
+     break;
+  }
+}while(count1!=n);
+if(count1==n)
+{
+   printf("\n ...I'S a safe state...");
+   printf("\n The safe sequence is....\n");
+   for(i=0;i<n;i++)
+       printf("\t P%d",sq[i]);
+   printf("\n");
+   printf("\n The available matrix is now : ");
+   for(i=0;i<r;i++)
+       printf("\t %d",available[i]);
+}
+getch();
+}
