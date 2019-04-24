@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<process.h>
+#include<conio.h>
+void main()
+{
+int alloc[10][5],max[10][5],need[10][5],available[3],flag[10],sq[10];
+int n,r,i,j,k,count,count1=0;
+//clrscr();
+printf("\n Input the number of processes running ( <10 )..");
+scanf("%d",&n);
+for(i=0;i<10;i++)
+    flag[i]=0;
+printf("\n Input the number of resources ( <5 )..");
+scanf("%d",&r);
+printf("\n Input the allocation matrix for the processes in row major order..\n");
+for(i=0;i<n;i++)
+{
+    printf("\n Process %d\n",i);
+    for(j=0;j<r;j++)
+    {
+        printf("\n Resource %d\n",j);
+        scanf("%d",&alloc[i][j]);
+    }
+}
+printf("\n Input the no. of resources that a process can maximum have..\n");
+for(i=0;i<n;i++)
+{
+    printf("\n Process %d\n",i);
+    for(j=0;j<r;j++)
+    {
+        printf("\n Resource %d\n",j);
+        scanf("%d",&max[i][j]);
+    }
+}
+printf("\n Input the no. of available instances of each resource..\n");
+for(i=0;i<r;i++)
+{
+    printf("\n Resource %d : ",i);
+    scanf("%d",&available[i]);
+}
+printf("\n The need matrix is as follows : \n");
+for(i=0;i<n;i++)
+{
+    for(j=0;j<r;j++)
+    {
+        need[i][j]= max[i][j]-alloc[i][j];
+        printf("\t %d",need[i][j]);
+    }
+    printf("\n");
+}
